@@ -4,7 +4,8 @@
 <div>
   <ul>
     <li *ngFor=" let link of linksNaoLidos ">
-      <strong> {{ link.name }} </strong> <span> Novo </span>
+      <app-link-list-item [link]="link"></app-link-list-item>
     </li>
   </ul>
 </div>
+<app-add-link></app-add-link>
