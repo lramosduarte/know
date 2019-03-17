@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Link } from 'src/app/models/link';
+import { BuscadorLinksService } from 'src/app/services/gerenciador-links/buscador-links.service';
 
 
 @Component({
@@ -11,9 +12,11 @@ import { Link } from 'src/app/models/link';
 export class LinkListComponent implements OnInit {
   linksNaoLidos: Link[];
 
-  constructor() { }
+  constructor(private buscador: BuscadorLinksService) { }
 
   ngOnInit() {
+    this.buscador.linksNaoLidos()
+      .subscribe( links => this.linksNaoLidos = links );
   }
 
 }
