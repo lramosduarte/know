@@ -5,10 +5,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LinkListComponent } from './link-list/link-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LinkListComponent
   ],
   imports: [
     AppRoutingModule,
