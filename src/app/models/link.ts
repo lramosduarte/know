@@ -3,5 +3,5 @@ export class Link {
     name?: string;
     dateRead?: Date;
     dateAdd: Date;
-    favorite: boolean = false;
+    favorite?: boolean = false;
 }
