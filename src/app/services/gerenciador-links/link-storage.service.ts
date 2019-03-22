@@ -7,6 +7,7 @@ export class LinkStorageService {
   links: Link[];
 
   constructor() {
+    this.iniciaStore();
     this.carregaDados();
   }
 
@@ -22,7 +23,18 @@ export class LinkStorageService {
   }
 
   private carregaDados() {
-    this.links = JSON.parse(localStorage.getItem(this.KEY_LINKS_STORE));
+    this.links = JSON.parse(localStorage.getItem(this.KEY_LINKS_STORE), (k, v) => {
+      if (k === 'dateAdd' || k == 'dateRead' && v) {
+        return new Date(v);
+      }
+      return v;
+    });
+  }
+
+  private iniciaStore() {
+    if (!localStorage.getItem(this.KEY_LINKS_STORE)) {
+      localStorage.setItem(this.KEY_LINKS_STORE, JSON.stringify([]));
+    }
   }
 
 }
