@@ -17,4 +17,18 @@ export class LinkListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  get linkNovo() {
+    const agora = new Date().getTime();
+    const umDia = 1000 * 60 * 60 * 24;
+    const ontem = agora - umDia;
+    return this.link.dateAdd.getTime() > ontem;
+  }
+
+  get exibirNome() {
+    if (this.link.name) {
+      return this.link.name;
+    }
+    return this.link.url;
+  }
+
 }

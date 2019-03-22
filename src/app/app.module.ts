@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,20 +10,22 @@ import { LinkListComponent } from './link-list/link-list.component';
 import { AddLinkComponent } from './add-link/add-link.component';
 import { LinkListItemComponent } from './link-list-item/link-list-item.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    LinkListComponent,
     AddLinkComponent,
-    LinkListItemComponent
+    LinkListComponent,
+    LinkListItemComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ReactiveFormsModule,
 
     NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
