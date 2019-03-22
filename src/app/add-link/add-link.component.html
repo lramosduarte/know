@@ -1,5 +1,5 @@
 <div>
-  <input type="text" />
+  <input type="text" [formControl]="url" required/>
   <input type="checkbox">
-  <button (click)="handlerAdiciona()"> + </button>
+  <button (click)="handlerAdiciona()" [disabled]="!url.valid" > + </button>
 </div>

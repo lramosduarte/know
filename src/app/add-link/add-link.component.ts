@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import { AdicionadorLinksService } from '../services/gerenciador-links/adicionador-links.service';
-import { Link } from '../models/link';
+import { AdicionadorLinksService } from 'src/app/services/gerenciador-links/adicionador-links.service';
+import { Link } from 'src/app/models/link';
 
 
 @Component({
@@ -10,6 +11,11 @@ import { Link } from '../models/link';
   styleUrls: ['./add-link.component.sass']
 })
 export class AddLinkComponent implements OnInit {
+  url = new FormControl(null, [
+    Validators.required,
+    // TODO: adicionar validação de url
+  ]);
+  @Output() cadastraNovoLink: EventEmitter<null> = new EventEmitter();
 
   constructor(private adicionador: AdicionadorLinksService) { }
 
@@ -17,9 +23,14 @@ export class AddLinkComponent implements OnInit {
   }
 
   handlerAdiciona() {
-    const link: Link = {url: 'www.google.com.br', dateAdd: new Date()};
+    const link = new Link(this.url.value);
     this.adicionador.adicionaLink(link);
-    console.info(localStorage);
+    this.cadastraNovoLink.emit();
+    this.limpaForm();
+  }
+
+  private limpaForm() {
+    this.url.reset()
   }
 
 }

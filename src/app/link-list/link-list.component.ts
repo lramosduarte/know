@@ -15,8 +15,17 @@ export class LinkListComponent implements OnInit {
   constructor(private buscador: BuscadorLinksService) { }
 
   ngOnInit() {
-    this.buscador.linksNaoLidos()
-      .subscribe( links => this.linksNaoLidos = links );
+    this.atualizaListaLinks();
   }
+
+  public onSalvar() {
+    this.atualizaListaLinks();
+  }
+
+  private atualizaListaLinks() {
+    this.buscador.linksNaoLidos()
+      .subscribe(links => this.linksNaoLidos = links);
+  }
+
 
 }
