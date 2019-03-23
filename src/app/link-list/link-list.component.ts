@@ -18,11 +18,7 @@ export class LinkListComponent implements OnInit {
     this.atualizaListaLinks();
   }
 
-  public onSalvar() {
-    this.atualizaListaLinks();
-  }
-
-  private atualizaListaLinks() {
+  public atualizaListaLinks() {
     this.buscador.linksNaoLidos()
       .subscribe(links => this.linksNaoLidos = links);
   }

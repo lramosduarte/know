@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {LinkListComponent} from 'src/app/link-list/link-list.component';
+import { MyLinksComponent } from './my-links/my-links.component';
 
 
 const routes: Routes = [
-  {path: 'links', component: LinkListComponent},
+  {path: 'links/my', component: MyLinksComponent},
 ];
 
 @NgModule({
