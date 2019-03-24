@@ -2,9 +2,11 @@
   Lista de Links
 </div>
 <div>
-  <ul>
-    <li *ngFor=" let link of linksNaoLidos ">
-      <app-link-list-item [link]="link"></app-link-list-item>
-    </li>
+  <ul class="list-group">
+    <app-link-list-item
+      *ngFor="let link of links"
+      [link]="link"
+      (clicarLink)="handleSelecionaLink($event)">
+    </app-link-list-item>
   </ul>
 </div>

@@ -1,4 +1,9 @@
-<div>
-  <strong> {{ exibirNome }} </strong>
-  <span *ngIf="linkNovo"> Novo </span>
-</div>
+<li
+  class="list-group-item list-group-item-action"
+  [ngClass]="{'active': linkSelecionado}"
+  (click)="onClick()">
+  <div>
+    <strong> {{ exibirNome }} </strong>
+    <span *ngIf="linkNovo"> Novo </span>
+  </div>
+</li>
