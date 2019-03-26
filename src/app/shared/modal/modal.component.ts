@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -8,8 +8,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Input() titulo: string = '';
-  @Input() labelBotaoFechar: string = '';
+  @Input() titulo = '';
+  @Output() fechar = new EventEmitter<void>();
 
   constructor(
     private activeModal: NgbActiveModal,
@@ -19,11 +19,16 @@ export class ModalComponent implements OnInit {
   }
 
   handleClose(): void {
-    this.activeModal.close('Close clic');
+    this.activeModal.close('Fechando Modal');
   }
 
   handleDismiss(): void {
-    this.activeModal.dismiss('Cross click')
+    this.activeModal.dismiss('Fechando Modal')
+  }
+
+  handleConfirmar(): void {
+    this.activeModal.close('Adiciona link');
+    this.fechar.emit();
   }
 
 }

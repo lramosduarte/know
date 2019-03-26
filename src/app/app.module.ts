@@ -4,21 +4,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LinkListComponent } from './link-list/link-list.component';
 import { AddLinkComponent } from './add-link/add-link.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LinkListComponent } from './link-list/link-list.component';
 import { LinkListItemComponent } from './link-list-item/link-list-item.component';
 import { MyLinksComponent } from './my-links/my-links.component';
+import { SharedModule } from './shared/shared.module';
+import { ModalAddLinkComponent } from './modal-add-link/modal-add-link.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     AddLinkComponent,
+    AppComponent,
     LinkListComponent,
     LinkListItemComponent,
     MyLinksComponent,
+    ModalAddLinkComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -26,8 +29,15 @@ import { MyLinksComponent } from './my-links/my-links.component';
     ReactiveFormsModule,
 
     NgbModule,
+
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent,
+  ],
+  entryComponents: [
+    ModalAddLinkComponent,
+  ]
 })
 export class AppModule { }
