@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title" *ngIf="titulo" >{{ titulo }}!</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Fechar modal"
+    (click)="handleDismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ng-content></ng-content>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="handleClose()">
+  {{ labelBotaoFechar }}
+  </button>
+</div>
