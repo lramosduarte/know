@@ -1,5 +1,32 @@
 <div>
-  <input type="text" [formControl]="url" required/>
-  <input type="checkbox">
-  <button (click)="handlerAdiciona()" [disabled]="!url.valid" > + </button>
+  <form [formGroup]="adicionarLinkForm">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Url</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="url"
+          placeholder="http://google.com.br"
+          required/>
+      </div>
+
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          Lido?
+        </label>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <button
+        class="btn btn-primary"
+        (click)="handlerAdiciona()"
+        [disabled]="!adicionarLinkForm.valid">
+         +
+      </button>
+    </div>
+  </form>
 </div>

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { AdicionadorLinksService } from 'src/app/services/gerenciador-links/adicionador-links.service';
 import { Link } from 'src/app/models/link';
@@ -11,26 +11,32 @@ import { Link } from 'src/app/models/link';
   styleUrls: ['./add-link.component.sass']
 })
 export class AddLinkComponent implements OnInit {
-  url = new FormControl(null, [
-    Validators.required,
-    // TODO: adicionar validação de url
-  ]);
-  @Output() cadastraNovoLink: EventEmitter<null> = new EventEmitter();
+  adicionarLinkForm = new FormGroup({
+    url: new FormControl(null, [
+      Validators.required,
 
-  constructor(private adicionador: AdicionadorLinksService) { }
+    ])
+  });
+
+  constructor(
+    private adicionador: AdicionadorLinksService,
+  ) { }
 
   ngOnInit() {
   }
 
-  handlerAdiciona() {
-    const link = new Link(this.url.value);
-    this.adicionador.adicionaLink(link);
-    this.cadastraNovoLink.emit();
-    this.limpaForm();
+  get errosFormulario() {
+    return this.adicionarLinkForm.errors;
   }
 
-  private limpaForm() {
-    this.url.reset()
+  handlerAdiciona() {
+    const link = new Link(this.adicionarLinkForm.get('url').value);
+    this.adicionador.adicionaLink(link);
+    this.handleLimpaForm();
+  }
+
+  handleLimpaForm() {
+    this.adicionarLinkForm.reset();
   }
 
 }
