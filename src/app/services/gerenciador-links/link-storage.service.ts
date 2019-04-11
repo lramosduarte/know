@@ -1,6 +1,12 @@
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
 import { Link } from 'src/app/models/link';
 
 
+@Injectable({
+  providedIn: 'root',
+})
 export class LinkStorageService {
   private KEY_LINKS_STORE = 'links';
 
@@ -17,9 +23,9 @@ export class LinkStorageService {
     localStorage.setItem(this.KEY_LINKS_STORE, JSON.stringify(links));
   }
 
-  get(): Link[] {
+  get(): Observable<Link[]> {
     this.carregaDados();
-    return this.links;
+    return of(this.links);
   }
 
   private carregaDados() {

@@ -10,14 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { LinkListComponent } from './link-list/link-list.component';
 import { LinkListItemComponent } from './link-list-item/link-list-item.component';
 import { MyLinksComponent } from './my-links/my-links.component';
-import { SharedModule } from './shared/shared.module';
 import { ModalAddLinkComponent } from './modal-add-link/modal-add-link.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AddLinkComponent,
     AppComponent,
+    AddLinkComponent,
     LinkListComponent,
     LinkListItemComponent,
     MyLinksComponent,
