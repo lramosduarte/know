@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { Link } from 'src/app/models/link';
+
 import { LinkStorageService } from './link-storage.service';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BuscadorLinksService {
+  private linksSendoAtualizados = new Subject<Link[]>();
 
-  constructor(private storage: LinkStorageService) { }
+  linksAtualizados$ = this.linksSendoAtualizados.asObservable();
 
-  linksNaoLidos(): Observable<Link[]> {
-    return this.storage.get();
+  constructor(
+    private storage: LinkStorageService,
+  ) { }
+
+  todosLinks() {
+    this.storage.busca().subscribe(
+      dados => {
+        const links : Link[] = this.mapearDadosParaLink(dados);
+        this.linksSendoAtualizados.next(links);
+      });
   }
 
-  todosLinks(): Observable<Link[]> {
-    return this.storage.get();
-  }
-
-  private linkNaoLido(link: Link): Link {
-    if (!link.dateRead) {
-      return link;
-    }
+  private mapearDadosParaLink(dados): Link[] {
+    return dados.map(e => {
+      return {...e.payload.doc.data()} as Link;
+    });
   }
 
 }

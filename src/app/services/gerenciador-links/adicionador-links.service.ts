@@ -5,16 +5,16 @@ import { LinkStorageService } from './link-storage.service';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdicionadorLinksService {
 
-  constructor() {
-
-  }
+  constructor(
+    private storage: LinkStorageService,
+  ) { }
 
   adicionaLink(link: Link): void {
-    new LinkStorageService().adiciona(link);
+    this.storage.adiciona(link);
   }
 
 }
