@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,6 +14,8 @@ import { LinkListItemComponent } from './link-list-item/link-list-item.component
 import { MyLinksComponent } from './my-links/my-links.component';
 import { ModalAddLinkComponent } from './modal-add-link/modal-add-link.component';
 import { SharedModule } from './shared/shared.module';
+
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -25,6 +29,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     ReactiveFormsModule,
 
