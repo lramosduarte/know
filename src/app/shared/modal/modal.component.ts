@@ -10,6 +10,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalComponent implements OnInit {
   @Input() titulo = '';
   @Output() fechar = new EventEmitter<void>();
+  @Input() confimarDesabilitado = true;
+  @Input() cancelarDesabilitado = false;
 
   constructor(
     private activeModal: NgbActiveModal,

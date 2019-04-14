@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { AdicionadorLinksService } from 'src/app/services/gerenciador-links/adicionador-links.service';
-import { Link } from 'src/app/models/link';
+import { fromURL, Link } from 'src/app/models/link';
 
 
 @Component({
@@ -26,11 +26,13 @@ export class AddLinkComponent implements OnInit {
   }
 
   get errosFormulario() {
-    return this.adicionarLinkForm.errors;
+    return Object.keys(this.adicionarLinkForm.controls).map(
+      nomeControl => this.adicionarLinkForm.controls[nomeControl].errors
+    );
   }
 
-  handlerAdiciona() {
-    const link = new Link(this.adicionarLinkForm.get('url').value);
+  handleAdiciona() {
+    const link = fromURL(this.adicionarLinkForm.get('url').value);
     this.adicionador.adicionaLink(link);
     this.handleLimpaForm();
   }
