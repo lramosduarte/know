@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 
-import { Link } from 'src/app/models/link';
+import { Link, toObject } from 'src/app/models/link';
 
 
 @Injectable({
@@ -12,35 +13,16 @@ export class LinkStorageService {
 
   links: Link[];
 
-  constructor() {
-    this.iniciaStore();
-    this.carregaDados();
+  constructor(
+    private firebase: AngularFirestore,
+  ) { }
+
+  adiciona(link: Link): void {
+    this.firebase.collection(`${this.KEY_LINKS_STORE}/`).add(toObject(link));
   }
 
-  adiciona(link: Link) {
-    const links = this.links || [];
-    links.push(link);
-    localStorage.setItem(this.KEY_LINKS_STORE, JSON.stringify(links));
-  }
-
-  get(): Observable<Link[]> {
-    this.carregaDados();
-    return of(this.links);
-  }
-
-  private carregaDados() {
-    this.links = JSON.parse(localStorage.getItem(this.KEY_LINKS_STORE), (k, v) => {
-      if (k === 'dateAdd' || k == 'dateRead' && v) {
-        return new Date(v);
-      }
-      return v;
-    });
-  }
-
-  private iniciaStore() {
-    if (!localStorage.getItem(this.KEY_LINKS_STORE)) {
-      localStorage.setItem(this.KEY_LINKS_STORE, JSON.stringify([]));
-    }
+  busca(): Observable<any> {
+    return this.firebase.collection(this.KEY_LINKS_STORE).snapshotChanges();
   }
 
 }
