@@ -8,7 +8,7 @@ import { ModalAddLinkComponent } from '../modal-add-link/modal-add-link.componen
 @Component({
   selector: 'app-my-links',
   templateUrl: './my-links.component.html',
-  styleUrls: ['./my-links.component.sass']
+  styleUrls: ['./my-links.component.scss']
 })
 export class MyLinksComponent implements OnInit {
   @ViewChild(LinkListComponent) linkList: LinkListComponent;

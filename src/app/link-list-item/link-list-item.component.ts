@@ -6,7 +6,7 @@ import { Link } from '../models/link';
 @Component({
   selector: 'app-link-list-item',
   templateUrl: './link-list-item.component.html',
-  styleUrls: ['./link-list-item.component.sass']
+  styleUrls: ['./link-list-item.component.scss']
 })
 export class LinkListItemComponent implements OnInit {
   linkSelecionado: boolean = false;
