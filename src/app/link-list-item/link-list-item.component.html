@@ -3,7 +3,10 @@
   [ngClass]="{'active': linkSelecionado}"
   (click)="onClick()">
   <div>
+    <div class="alloc-width">
+      <span class="badge badge-secondary" *ngIf="linkNovo"> Novo </span>
+    </div>
+    <input class="checkbox-item-lido" type="checkbox" [readOnly]>
     <strong> {{ exibirNome }} </strong>
-    <span *ngIf="linkNovo"> Novo </span>
   </div>
 </li>

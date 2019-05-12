@@ -27,7 +27,7 @@ export class LinkListItemComponent implements OnInit {
     const agora = new Date().getTime();
     const umDia = 1000 * 60 * 60 * 24;
     const ontem = agora - umDia;
-    return this.link.dateAdd.seconds > ontem;
+    return this.link.dateAdd.toDate().getTime() > ontem;
   }
 
   get exibirNome(): string {

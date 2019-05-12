@@ -6,6 +6,7 @@ export class Link {
   dateRead?: firebase.firestore.Timestamp;
   name?: string;
   favorite = false;
+  tag?: Array<String>;
 }
 
 export function fromURL(url): Link {

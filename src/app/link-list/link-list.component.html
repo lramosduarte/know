@@ -1,9 +1,7 @@
-<div>
-  Lista de Links
-</div>
-<div>
+<div class="col col-md-12">
   <ul class="list-group">
     <app-link-list-item
+      class="col-md-12"
       *ngFor="let link of links"
       [link]="link"
       (clicarLink)="handleSelecionaLink($event)">

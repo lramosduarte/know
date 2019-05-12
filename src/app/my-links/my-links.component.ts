@@ -27,4 +27,8 @@ export class MyLinksComponent implements OnInit {
     modal.result.then(() => this.linkList.atualizaListaLinks());
   }
 
+  @HostListener('document:keyup.alt.n')
+  onAltAndACarregaModal(): void {
+    this.carregarModal();
+  }
 }
