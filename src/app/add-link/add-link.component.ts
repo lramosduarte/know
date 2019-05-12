@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
+import { fromURL } from 'src/app/models/link';
 import { AdicionadorLinksService } from 'src/app/services/gerenciador-links/adicionador-links.service';
-import { fromURL, Link } from 'src/app/models/link';
+import { URLDisponivelValidator } from 'src/app/shared/validators/urls.directive';
 
 
 @Component({
@@ -11,11 +16,17 @@ import { fromURL, Link } from 'src/app/models/link';
   styleUrls: ['./add-link.component.sass']
 })
 export class AddLinkComponent implements OnInit {
-  adicionarLinkForm = new FormGroup({
-    url: new FormControl(null, [
-      Validators.required,
+  private PROTOCOLO = '((https|http):\\/\\/)';
+  private CORPO_URL = '(\\w+)\\.([a-zA-Z]+\\.?\\/?)+.*';
+  private PATTERN_VALIDAR_URL = new RegExp(`${this.PROTOCOLO}${this.CORPO_URL}`);
 
-    ])
+  adicionarLinkForm = new FormGroup({
+    url: new FormControl(
+      null, [
+      Validators.required,
+      Validators.pattern(this.PATTERN_VALIDAR_URL)
+      ], [URLDisponivelValidator()]
+    )
   });
 
   constructor(
