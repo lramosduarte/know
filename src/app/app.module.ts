@@ -17,6 +17,7 @@ import { ModalAddLinkComponent } from './modal-add-link/modal-add-link.component
 import { SharedModule } from './shared/shared.module';
 
 import { environment } from 'src/environments/environment';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { environment } from 'src/environments/environment';
     LinkListItemComponent,
     MyLinksComponent,
     ModalAddLinkComponent,
+    HeaderComponent,
   ],
   imports: [
     AppRoutingModule,
