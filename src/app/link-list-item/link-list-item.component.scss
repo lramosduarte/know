@@ -1,0 +1,25 @@
+$tamanho-span-news-width: 37.52px;
+$tamanho-span-news-height: 18px;
+
+li div {
+  display: flex;
+  align-items: center;
+  .checkbox-item-lido {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+
+    &:checked {
+      color: aqua;
+    }
+  }
+  .alloc-width {
+    width: $tamanho-span-news-width;
+    height: $tamanho-span-news-height;
+  }
+}
+
+.list-group-item {
+  border: none;
+}

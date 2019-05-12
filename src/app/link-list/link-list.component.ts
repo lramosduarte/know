@@ -3,13 +3,12 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { Link } from 'src/app/models/link';
 import { LinkListItemComponent } from 'src/app/link-list-item/link-list-item.component';
 import { BuscadorLinksService } from 'src/app/services/gerenciador-links/buscador-links.service';
-import { LinkStorageService } from 'src/app/services/gerenciador-links/link-storage.service';
 
 
 @Component({
   selector: 'app-link-list',
   templateUrl: './link-list.component.html',
-  styleUrls: ['./link-list.component.sass']
+  styleUrls: ['./link-list.component.scss']
 })
 export class LinkListComponent implements OnInit {
   links: Link[];

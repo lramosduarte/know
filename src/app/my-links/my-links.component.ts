@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { LinkListComponent } from '../link-list/link-list.component';
@@ -8,7 +8,7 @@ import { ModalAddLinkComponent } from '../modal-add-link/modal-add-link.componen
 @Component({
   selector: 'app-my-links',
   templateUrl: './my-links.component.html',
-  styleUrls: ['./my-links.component.sass']
+  styleUrls: ['./my-links.component.scss']
 })
 export class MyLinksComponent implements OnInit {
   @ViewChild(LinkListComponent) linkList: LinkListComponent;
@@ -27,4 +27,8 @@ export class MyLinksComponent implements OnInit {
     modal.result.then(() => this.linkList.atualizaListaLinks());
   }
 
+  @HostListener('document:keyup.alt.n')
+  onAltAndACarregaModal(): void {
+    this.carregarModal();
+  }
 }

@@ -1,0 +1,8 @@
+.container {
+  div {
+    &.busca {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+}
