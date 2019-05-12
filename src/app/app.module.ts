@@ -1,8 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -32,6 +33,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
 
     NgbModule,
